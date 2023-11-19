@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Illuminate\Http\JsonResponse;
 
 class TaskController extends Controller
 {
@@ -36,4 +37,10 @@ class TaskController extends Controller
         $task->update();
         return $task;
     }
+    public function destroy(Task $task): JsonResponse
+    {
+        $task->delete();
+        return response()->json(['message' => 'Task deleted successfully'], 200);
+    }
+
 }

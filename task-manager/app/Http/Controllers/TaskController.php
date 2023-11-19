@@ -47,4 +47,13 @@ class TaskController extends Controller
         $task->update();
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');;
     }
+
+    public function destroy(Task $task)
+    {
+        $task->delete();
+
+        session()->flash('success', 'Task deleted successfully!');
+
+        return redirect()->route('tasks.index');
+    }
 }

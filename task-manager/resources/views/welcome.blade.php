@@ -41,6 +41,11 @@
                     <td>
                         <!-- Add buttons for actions (e.g., edit, delete) here -->
                         <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-primary">Edit</a>
+                        <form action="{{ route('tasks.destroy', $task['id']) }}" method="post" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
